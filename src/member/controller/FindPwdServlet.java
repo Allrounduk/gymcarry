@@ -1,4 +1,4 @@
-package user.controller;
+package member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserDeleteServlet
+ * Servlet implementation class FindPwdServlet
  */
-@WebServlet("/UserDeleteServlet")
-public class UserDeleteServlet extends HttpServlet {
+@WebServlet("/FindPwdServlet")
+public class FindPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public UserDeleteServlet() {
+    public FindPwdServlet() {
         // TODO Auto-generated constructor stub
     }
 

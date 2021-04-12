@@ -18,7 +18,7 @@ public class EventDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Event> eList = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY EVENT_NO DESC) AS NUM, EVENT_NO, PARTNER_NAME, EVENT_ADDRESS, EVENT_TITLE, START_DATE, END_DATE FROM TB_EVENT)WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY EVENT_NO DESC) AS NUM, EVENT_NO, PARTNER_NAME, EVENT_ADDRESS, EVENT_TITLE, START_DATE, END_DATE FROM EVENT)WHERE NUM BETWEEN ? AND ?";
 		
 		int recordCountPerPage = 6;
 		int start = currentPage * recordCountPerPage - (recordCountPerPage -1);
@@ -108,7 +108,7 @@ public class EventDAO {
 	private int totalCount(Connection conn) {
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM TB_EVENT";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM EVENT";
 		int recordTotalCount = 0;
 		try {
 			stmt = conn.createStatement();
@@ -129,7 +129,7 @@ public class EventDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Event event = null;
-		String query = "SELECT * FROM TB_EVENT WHERE EVENT_NO = ?"; // 위치홀더는 물음표
+		String query = "SELECT * FROM EVENT WHERE EVENT_NO = ?"; // 위치홀더는 물음표
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, eventNo);

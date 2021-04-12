@@ -20,10 +20,10 @@
         <div class="frame">
             <a href="/"><img src="${path}/resources/img/logo.png"></a>
             <ul class="navbar">
-                <a href="#"><li class="nav-menu first-nav">GYM STORY</li></a>
+                <a href="/gymstory.html"><li class="nav-menu first-nav">GYM STORY</li></a>
                 <a href="#"><li class="nav-menu second-nav">GYM POT</li></a>
-                <a href="#"><li class="nav-menu third-nav">GYM MARKET</li></a>
-                <a href="#"><li class="nav-menu fourth-nav">GEUN DEAL</li></a>
+                <a href="/market/list"><li class="nav-menu third-nav">GYM MARKET</li></a>
+                <a href="/geundeal/list"><li class="nav-menu fourth-nav">GEUN DEAL</li></a>
             </ul>
             <ul class="login-box">
                 <a href="#"><li>LOGIN</li></a>
