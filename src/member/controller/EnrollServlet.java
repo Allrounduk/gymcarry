@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.vo.Member;
+import member.service.MemberService;
+import member.vo.Member;
 
 /**
  * Servlet implementation class EnrollServlet
  */
-@WebServlet("/user/enroll")
+@WebServlet("/member/enroll")
 public class EnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,6 +35,23 @@ public class EnrollServlet extends HttpServlet {
 		// user객체를 사용해 한 번에 넘겨줄 예정.
 		Member member = new Member();
 		member.setUserId(request.getParameter("user-id")); // enroll.html의 input태그를 넣을 것.
+		member.setUserPwd(request.getParameter("user-pwd"));
+		member.setNickname(request.getParameter("nickname"));
+		member.setName(request.getParameter("name"));
+		member.setGender(request.getParameter("gender"));
+		member.setEmail(request.getParameter("email"));
+		member.setPhone(request.getParameter("phone"));
+		member.setAddressCity(request.getParameter("addressCity"));
+		member.setAddressGu(request.getParameter("addressGu"));
+		member.setAdminYn(request.getParameter("adminYn"));
+		
+		int result = new MemberService().registerMember(member);
+		
+		if(result > 0) {
+			response.sendRedirect("/index.jsp");
+		}else {
+			response.sendRedirect("/member/memberError.html");
+		}
 		
 	}
 

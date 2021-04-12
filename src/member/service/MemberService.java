@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import common.JDBCTemplate;
-import member.model.dao.MemberDAO;
-import member.model.vo.Member;
+import member.dao.MemberDAO;
+import member.vo.Member;
 
 public class MemberService {
 
@@ -33,6 +33,12 @@ public class MemberService {
 		}
 
 		return member;
+	}
+
+//회원가입
+	public int registerMember(Member member) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
