@@ -1,6 +1,7 @@
 package member.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +19,7 @@ public class MemberDAO {
 	// 2. 생성자를 private으로 감춤
 	// 3. 1에 대한 getter를 만들되, 1이 null이면 객체를 할당
 
+//로그인
 	public Member selectOneUser(Connection conn, String userId, String userPwd) {
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -52,6 +54,39 @@ public class MemberDAO {
 		}
 
 		return member;
+	}
+
+// 회원가입
+	public int insertMember(Connection conn, Member member) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO MEMBER VALUES(USER_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,'N')";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			// uniqId, userId, userPwd, nickname, name, gender, email, phone, addressCity, addressGu, adminYn
+			pstmt.setString(1, member.getUserId());
+			pstmt.setString(2, member.getUserPwd());
+			pstmt.setString(3, member.getNickname());
+			pstmt.setString(4, member.getName());
+			pstmt.setString(5, member.getGender());
+			pstmt.setString(6, member.getEmail());
+			pstmt.setString(7, member.getEmail());
+			pstmt.setString(8, member.getPhone());
+			pstmt.setString(9, member.getAddressCity());
+			pstmt.setString(10, member.getAddressGu());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 
 }
