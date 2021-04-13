@@ -35,4 +35,31 @@ public class MemberService {
 		return member;
 	}
 
+//회원가입
+	public int registerMember(Member member) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		Connection conn = null;
+
+		try {
+			conn = factory.createConnection();
+			result = new MemberDAO().insertMember(conn, member);
+			System.out.println(member.toString());
+
+			if (result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+
+		return result;
+	}
+
 }
