@@ -11,5 +11,10 @@
 	<classpathentry kind="lib" path="/Users/basak/Library/Mobile Documents/com~apple~CloudDocs/Programming/GymCarry/GymCarry/WebContent/WEB-INF/lib/tomcat-dbcp.jar"/>
 	<classpathentry kind="lib" path="/Users/basak/Library/Mobile Documents/com~apple~CloudDocs/Programming/GymCarry/GymCarry/WebContent/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="/Users/basak/Library/Mobile Documents/com~apple~CloudDocs/Programming/GymCarry/GymCarry/WebContent/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="/usr/local/Cellar/tomcat@8/8.5.64/libexec/lib/servlet-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://docs.oracle.com/javaee/7/api/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
