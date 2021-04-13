@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.service.MemberService;
-import member.vo.Member;
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class EnrollServlet
@@ -30,26 +30,29 @@ public class EnrollServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//한글 깨지지 않도록 인코딩
 		request.setCharacterEncoding("UTF-8");
+		
 		// uniqId, userId, userPwd, nickname, name, gender, email, phone, addressCity, addressGu, adminYn
 		// user객체를 사용해 한 번에 넘겨줄 예정.
 		Member member = new Member();
 		member.setUserId(request.getParameter("user-id")); // enroll.html의 input태그를 넣을 것.
 		member.setUserPwd(request.getParameter("user-pwd"));
 		member.setNickname(request.getParameter("nickname"));
-		member.setName(request.getParameter("name"));
+		member.setName(request.getParameter("user-name"));
 		member.setGender(request.getParameter("gender"));
 		member.setEmail(request.getParameter("email"));
 		member.setPhone(request.getParameter("phone"));
-		member.setAddressCity(request.getParameter("addressCity"));
-		member.setAddressGu(request.getParameter("addressGu"));
-		member.setAdminYn(request.getParameter("adminYn"));
+		member.setAddressCity(request.getParameter("addr-city"));
+		member.setAddressGu(request.getParameter("addr-gu"));
 		
 		int result = new MemberService().registerMember(member);
 		
 		if(result > 0) {
 			response.sendRedirect("/index.jsp");
 		}else {
+			System.out.println("회원가입에 실패하였습니다.");
 			response.sendRedirect("/member/memberError.html");
 		}
 		

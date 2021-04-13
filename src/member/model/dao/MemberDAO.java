@@ -60,8 +60,8 @@ public class MemberDAO {
 	public int insertMember(Connection conn, Member member) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
-		String query = "INSERT INTO MEMBER VALUES(USER_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,'N')";
 		int result = 0;
+		String query = "INSERT INTO MEMBER VALUES(MEMBER_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,'N')";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -72,10 +72,9 @@ public class MemberDAO {
 			pstmt.setString(4, member.getName());
 			pstmt.setString(5, member.getGender());
 			pstmt.setString(6, member.getEmail());
-			pstmt.setString(7, member.getEmail());
-			pstmt.setString(8, member.getPhone());
-			pstmt.setString(9, member.getAddressCity());
-			pstmt.setString(10, member.getAddressGu());
+			pstmt.setString(7, member.getPhone());
+			pstmt.setString(8, member.getAddressCity());
+			pstmt.setString(9, member.getAddressGu());
 			
 			result = pstmt.executeUpdate();
 			

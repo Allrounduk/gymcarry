@@ -44,6 +44,7 @@ public class MemberService {
 		try {
 			conn = factory.createConnection();
 			result = new MemberDAO().insertMember(conn, member);
+			System.out.println(member.toString());
 
 			if (result > 0) {
 				JDBCTemplate.commit(conn);
