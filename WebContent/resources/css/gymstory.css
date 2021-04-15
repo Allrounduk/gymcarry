@@ -169,7 +169,30 @@ main>.frame>p>span {
     line-height: 1.9;
     letter-spacing: 0.02px;
 }
-
+.moving {
+    position: relative;
+    margin-top: 200px;
+    width: 1280px;
+    height: 250px;
+    background: url(/resources/img/story-bigact.png) 0 center/ 1345px repeat-x;
+    animation: movebg 4s linear infinite;
+}
+@keyframes movebg {
+    0% {background-position: 0 center;}
+    100% {background-position: -1345px center;}
+}
+.submoving {
+    position: relative;
+    margin-top: 0px;
+    width: 1280px;
+    height: 30px;
+    background: url(/resources/img/story-subact.png) 0 center/ 1630px repeat-x;
+    animation: movebg2 4s linear infinite;
+}
+@keyframes movebg2 {
+    0% {background-position: 0 center;}
+    100% {background-position: -1630px center;}
+}
 .big-marq {
     margin-top: 300px;
     font-family: Anton;

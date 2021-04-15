@@ -52,7 +52,6 @@ public class MemberDAO {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(stmt);
 		}
-
 		return member;
 	}
 
@@ -76,6 +75,55 @@ public class MemberDAO {
 			pstmt.setString(8, member.getAddressCity());
 			pstmt.setString(9, member.getAddressGu());
 			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+// 회원정보 수정
+	public int updateMember(Connection conn, Member member) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE INTO MEMBER SET USER_PWD=?, EMAIL=?, PHONE=?, ADDRESS_CITY=?, ADDRESS_GU=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getUserPwd());
+			pstmt.setString(2, member.getEmail());
+			pstmt.setString(3, member.getPhone());
+			pstmt.setString(4, member.getAddressCity());
+			pstmt.setString(5, member.getAddressGu());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	
+// 회원정보 삭제
+	public int deleteMember(Connection conn, String userId) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM MEMBER WHERE USER_ID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
